@@ -1,4 +1,8 @@
 MateMarrryMurderApp::Application.routes.draw do
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'sessions#destroy', as: 'signout'
+
   root to: 'games#index'
   resources :games
   # The priority is based upon order of creation:
@@ -58,3 +62,16 @@ MateMarrryMurderApp::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 end
+#== Route Map
+# Generated on 20 Oct 2013 17:18
+#
+# auth_failure        /auth/failure(.:format)            :controller#:action
+#      signout        /signout(.:format)                 sessions#destroy
+#         root        /                                  games#index
+#        games GET    /games(.:format)                   games#index
+#              POST   /games(.:format)                   games#create
+#     new_game GET    /games/new(.:format)               games#new
+#    edit_game GET    /games/:id/edit(.:format)          games#edit
+#         game GET    /games/:id(.:format)               games#show
+#              PUT    /games/:id(.:format)               games#update
+#              DELETE /games/:id(.:format)               games#destroy
