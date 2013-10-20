@@ -9,6 +9,8 @@ gem 'pg'
 
 gem 'omniauth-facebook'
 
+gem 'fb_graph'
+
 #Gemfile
 group :development, :test do
   gem 'pry-rails'           # Causes rails console to open pry
