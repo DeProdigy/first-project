@@ -19,7 +19,19 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: <%= File.basename(Rails.root) %>_production
+  database: d144rm9vlol8ld
   pool: 5
-  username: <%= ENV['PG_USERNAME'] %>
-  password:
+  username: crwrvoknoqdvzc
+  password: wDAOZFDrla5zWhc5EiOBpOY8cO
+  port: 5432
+  host: ec2-54-235-102-202.compute-1.amazonaws.com
+
+  # production:
+  # adapter: postgresql
+  # encoding: unicode
+  # database: ddut7v6pj5tbqu
+  # pool: 5
+  # username: fvpqhfzusshfch
+  # password: Q787hi9QR6c2Y4CtFJEETXgWGt
+  # host: ec2-54-225-112-205.compute-1.amazonaws.com
+  # port: 5432
