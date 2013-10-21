@@ -1,10 +1,35 @@
 <h1>Create a new game</h1>
 <br>
 <h2>Pick a friend to play with</h2>
-<br>
-<br>
-<br>
-<h2>Choose a gender to play with</h2>
-<br>
-<br>
-<br>
+<div>
+
+  <%= form_for Game.new do |f| %>
+    <%= f.radio_button :player_2, "#{@player_choice_1.name}" %>
+    <%= f.label :player_2, "#{@player_choice_1.name}", :value => "#{@player_choice_1.name}" %><br>
+    <%= f.radio_button :player_2, "#{@player_choice_2.name}" %>
+    <%= f.label :player_2, "#{@player_choice_2.name}", :value => "#{@player_choice_2.name}" %><br>
+    <%= f.radio_button :player_2, "#{@player_choice_3.name}" %>
+    <%= f.label :player_2, "#{@player_choice_3.name}", :value => "#{@player_choice_3.name}" %><br>
+    <%= f.radio_button :player_2, "#{@player_choice_4.name}" %>
+    <%= f.label :player_2, "#{@player_choice_4.name}", :value => "#{@player_choice_4.name}" %><br>
+    <%= f.radio_button :player_2, "#{@player_choice_5.name}" %>
+    <%= f.label :player_2, "#{@player_choice_5.name}", :value => "#{@player_choice_5.name}" %>
+  <br>
+  <br>
+  <h2>Choose a gender to play with</h2>
+
+    <%= f.radio_button :gender, "male" %>
+    <%= f.label :gender, "male", :value => "male" %><br>
+    <%= f.radio_button :gender, "female" %>
+    <%= f.label :gender, "female", :value => "female" %><br>
+    <br>
+    <%= f.submit %>
+  <% end %>
+
+<div>
+
+
+
+
+
+
