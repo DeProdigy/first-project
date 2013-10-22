@@ -31,6 +31,7 @@ class GamesController < ApplicationController
     friends.each do |friend|
       friends_array << friend
     end
+
       #each friend in the array looks like this:
       # <FbGraph::User:0x007fed4ed7c998 @identifier="558107821",
       # @endpoint="https://graph.facebook.com/558107821",
@@ -79,18 +80,58 @@ class GamesController < ApplicationController
     @player_choice_4 = friends_array.sample
     @player_choice_5 = friends_array.sample
 
+    @player_1 = user_fb_id
+
+
+
+    # url = "graph.facebook.com/#{user_id}/friends/#{@player_choice_1.identifier}?fields=mutualfriends.fields(gender,name)&access_token=CAACEdEose0cBACh8Ok5U0ZBC6AlSafxDkIZCgGjyMeMSBDAa5LyGzn4YsuEZAO3xpndFPJMs9NL7CEjxZBzbCopvCC0pgVh9CKOuoSHVWI8y6i2rEjV3p3rZCsMZBNpKFkjTEOZBZAg4bwizIIUPVAQe2SziXBErDAtNM07s5GgMWY70tBvYB7i53Sm8E5lU8N4ZD"
+
+    # fql_2 = "SELECT name, mutual_friends FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())"
+    # fql = "SELECT uid, first_name, last_name, pic_small FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = 638291797) AND uid IN (SELECT uid2 FROM friend WHERE uid1 = 806667714)"
+
+    # #mutual_friends = FbGraph::Query.new(fql_2).fetch(:access_token => oauth_token)
+
+    # # queries = '{"user_friends":"SELECT uid2 FROM friend WHERE uid1 = 638291797",
+    # # "mutual_friends":"SELECT uid1, uid2 FROM friend WHERE uid1 IN (SELECT uid2 FROM #{user_friends}) AND uid2 IN (SELECT uid2 FROM #user_friends)"}';
+    # mutual_friends = HTTParty.get('url')
+    # raise
   end
 
   def create
+    game = params[:game]
+    player_1 = game[:player_1]
+    player_2 = game[:player_2]
+    gender = game[:gender]
+
+    new_game = Game.new
+    new_game.player_1 = player_1
+    new_game.player_2 = player_2
+    new_game.gender = gender
+    new_game.save
+
+    redirect_to("/games/#{new_game.id}/edit")
   end
 
   def show
   end
 
   def edit
+    @choice = Choice.new
+
+    # @graph = Koala::Facebook::API.new(oauth_token)
+
+    # friend_id = 'the_friend_id'
+    # @graph.get_connections("me", "mutualfriends/#{friend_id}")
+
+    @random_person_1 = "Maya"
+    @random_person_2 = "Mika"
+    @random_person_3 = "Jules"
   end
 
   def update
+    choice = params[:choice]
+
+
   end
 
   def destroy

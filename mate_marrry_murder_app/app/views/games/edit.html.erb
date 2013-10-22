@@ -1,0 +1,50 @@
+<h1>Choose</h1>
+
+<%= form_for :choice do |f| %>
+  <%= "#{@random_person_1}" %>
+  <br>
+  <br>
+  <%= f.hidden_field :given_1, :value => "#{@random_person_1}" %>
+  <%= f.radio_button :answered_1, "Mate" %>
+  <%= f.label :answered_1, "Mate", :value => "mate" %>
+  <%= f.radio_button :answered_1, "Marry" %>
+  <%= f.label :answered_1, "Marry", :value => "marry" %>
+  <%= f.radio_button :answered_1, "Murder" %>
+  <%= f.label :answered_1, "Murder", :value => "murder" %>
+
+  <br>
+  <br>
+  <br>
+
+  <%= "#{@random_person_2}" %>
+  <br>
+  <br>
+  <%= f.hidden_field :given_2, :value => "#{@random_person_2}" %>
+  <%= f.radio_button :answered_2, "Mate" %>
+  <%= f.label :answered_2, "Mate", :value => "mate" %>
+  <%= f.radio_button :answered_2, "Marry" %>
+  <%= f.label :answered_2, "Marry", :value => "marry" %>
+  <%= f.radio_button :answered_2, "Murder" %>
+  <%= f.label :answered_2, "Murder", :value => "murder" %>
+
+  <br>
+  <br>
+  <br>
+
+  <%= "#{@random_person_3}" %>
+  <br>
+  <br>
+  <%= f.hidden_field :given_3, :value => "#{@random_person_3}" %>
+  <%= f.radio_button :answered_3, "Mate" %>
+  <%= f.label :answered_3, "Mate", :value => "mate" %>
+  <%= f.radio_button :answered_3, "Marry" %>
+  <%= f.label :answered_3, "Marry", :value => "marry" %>
+  <%= f.radio_button :answered_3, "Murder" %>
+  <%= f.label :answered_3, "Murder", :value => "murder" %>
+
+  <br>
+  <br>
+  <br>
+  <%= f.submit %>
+
+<% end %>

@@ -7,9 +7,11 @@ gem 'rails', '3.2.14'
 
 gem 'pg'
 
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '1.4.0'
 
 gem 'fb_graph'
+
+gem 'httparty'
 
 #Gemfile
 group :development, :test do
