@@ -13,6 +13,8 @@ gem 'fb_graph'
 
 gem 'httparty'
 
+gem "koala", "~> 1.7.0rc1"
+
 #Gemfile
 group :development, :test do
   gem 'pry-rails'           # Causes rails console to open pry

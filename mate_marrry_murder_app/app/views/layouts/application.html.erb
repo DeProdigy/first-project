@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
   <div id="user_nav">
     <% if current_user %>
       Signed in as <strong><%= current_user.name %></strong>!
@@ -15,6 +16,12 @@
       <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
     <% end %>
   </div>
+
+<div id="flash_notice">
+  <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <% end %>
+</div>
 
 <%= yield %>
 
