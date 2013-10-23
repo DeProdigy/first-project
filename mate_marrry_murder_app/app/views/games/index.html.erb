@@ -1,13 +1,36 @@
 <h1>Welcome to Mate Marry Murder</h1>
+<% if @current_user_session == nil %>
 <br>
-<h2>Play with your facebook friends</h2>
+  <h2>Play with your facebook friends</h2>
+  <br>
+  <div>
+    <h2>"I love judging people... as long as they don't judge me"</h2>
+    <h4>-- Random user testimonial</h4>
+  <div>
 <br>
-<div>
-  <h2>"I love judging people... as long as they don't judge me"</h2>
-  <h4>-- Random user testimonial</h4>
-<div>
+<br>
+<% end %>
+<% if @current_user_session != nil %>
+  <h2>Your Games:</h2>
+  <% if @games_started.empty? == false %>
+    <h4>You started: </h4>
+    <% @games_started.each do |game| %>
+    <a href="/games/<%=game.id%>">
+    <%= game.id %>
+    With: <%= game.player_2_name %></a><br><br><br>
+    <% end %>
+  <% end %>
 
-<br>
-<br>
+  <% if @games_in.empty? == false %>
+    <h4>You're invited: </h4>
+    <% @games_in.each do |game| %>
+    <a href="/games/<%=game.id%>">
+    <%= game.id %>
+    By: <%= game.player_1_name %></a><br><br><br>
+    <% end %>
+  <% end %>
 
-<%= link_to("Start the game", new_game_path) %>
+
+  <br>
+  <%= link_to("Start new game", new_game_path) %>
+<% end %>

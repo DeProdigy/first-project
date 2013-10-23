@@ -4,6 +4,9 @@
 <div>
   <%# image info:   https://developers.facebook.com/docs/reference/api/using-pictures/ %>
   <%= form_for Game.new do |f| %>
+    <%= f.hidden_field :player_1_name, :value => "#{@player_1_name}" %>
+
+
     <%= image_tag("https://graph.facebook.com/#{@player_choice_1["username"]}/picture?type=large") %>
     <%= f.radio_button :player_2, "#{@player_choice_1["id"]}" %>
     <%= f.label :player_2, "#{@player_choice_1["name"]}", :value => "#{@player_choice_1["id"]}" %><br>

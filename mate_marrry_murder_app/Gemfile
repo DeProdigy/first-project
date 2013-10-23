@@ -15,6 +15,10 @@ gem 'httparty'
 
 gem "koala", "~> 1.7.0rc1"
 
+gem "json"
+
+gem 'yajl-ruby', '~> 1.1.0', require: 'yajl'
+
 #Gemfile
 group :development, :test do
   gem 'pry-rails'           # Causes rails console to open pry

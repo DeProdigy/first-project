@@ -16,15 +16,15 @@ test:
   username: <%= ENV['PG_USERNAME'] %>
   password:
 
+
 production:
   adapter: postgresql
   encoding: unicode
-  database: d144rm9vlol8ld
+  database: <%= File.basename(Rails.root) %>_test
   pool: 5
-  username: crwrvoknoqdvzc
-  password: wDAOZFDrla5zWhc5EiOBpOY8cO
-  port: 5432
-  host: ec2-54-235-102-202.compute-1.amazonaws.com
+  host: localhost
+  username: <%= ENV['PG_USERNAME'] %>
+  password:
 
   # production:
   # adapter: postgresql

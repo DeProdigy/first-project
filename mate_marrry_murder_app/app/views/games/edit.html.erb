@@ -6,7 +6,7 @@
   <%= "#{@random_person_1["name"]}" %>
   <br>
   <br>
-  <%= f.hidden_field :given_1, :value => "#{@random_person_1}" %>
+  <%= f.hidden_field :given_1, :value => @random_person_1 %>
   <%= f.radio_button :answered_1, "Mate" %>
   <%= f.label :answered_1, "Mate", :value => "mate" %>
   <%= f.radio_button :answered_2, "Marry" %>
@@ -20,7 +20,7 @@
   <%= "#{@random_person_2["name"]}" %>
   <br>
   <br>
-  <%= f.hidden_field :given_2, :value => "#{@random_person_2}" %>
+  <%= f.hidden_field :given_2, :value => @random_person_2 %>
   <%= f.radio_button :answered_1, "Mate" %>
   <%= f.label :answered_2, "Mate", :value => "mate" %>
   <%= f.radio_button :answered_2, "Marry" %>
@@ -34,7 +34,7 @@
   <%= "#{@random_person_3["name"]}" %>
   <br>
   <br>
-  <%= f.hidden_field :given_3, :value => "#{@random_person_3}" %>
+  <%= f.hidden_field :given_3, :value => @random_person_3 %>
   <%= f.radio_button :answered_1, "Mate" %>
   <%= f.label :answered_3, "Mate", :value => "mate" %>
   <%= f.radio_button :answered_2, "Marry" %>

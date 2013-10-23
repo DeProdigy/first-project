@@ -2,3 +2,25 @@
 <br>
 <br>
 <h2>You're playing with:</h2>
+<%= image_tag("https://graph.facebook.com/#{@other_player}/picture?type=large") %>
+<h4><%= @other_player_name %></h4>
+<br>
+<br>
+<h2>You chose:</h2>
+<div>
+  <div>
+    <h4><%= @given_1[1] %></h4>
+    <%= image_tag("https://graph.facebook.com/#{@given_1[3]}/picture?type=large") %>
+    <h4><%= @answered_1 %></h4>
+  </div>
+   <div>
+    <h4><%= @given_2[1] %></h4>
+    <%= image_tag("https://graph.facebook.com/#{@given_2[3]}/picture?type=large") %>
+    <h4><%= @answered_2 %></h4>
+  </div>
+   <div>
+    <h4><%= @given_3[1] %></h4>
+    <%= image_tag("https://graph.facebook.com/#{@given_3[3]}/picture?type=large") %>
+    <h4><%= @answered_3 %></h4>
+  </div>
+</div

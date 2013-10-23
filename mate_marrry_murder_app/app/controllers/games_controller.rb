@@ -1,9 +1,23 @@
 class GamesController < ApplicationController
 
   def index
+    #@games_all = []
+    if session[:user_id]
+      @current_user_session = session[:user_id]
+
+      current_user_db = User.find(@current_user_session)
+      @games_started = Game.where(player_1: current_user_db.uid)
+      @games_in = Game.where(player_2: current_user_db.uid)
+      # @games_all << games_started
+      # @games_all << games_in
+    end
+
+    #<Game id: 59, player_1: "806667714", player_2: "1301303370", created_at: "2013-10-23 19:06:43", updated_at: "2013-10-23 19:06:43", gender: "female", player_1_name: "Alex Hint", player_2_name: "Alex Rogozin">]
+
   end
 
   def new
+
     friends_array = []
     #get the current user's id from cookies
     user_id = session[:user_id]
@@ -29,6 +43,7 @@ class GamesController < ApplicationController
     @graph = Koala::Facebook::API.new(oauth_token)
 
     profile = @graph.get_object("me")
+
     #graph.get_connections("me", "friends", "fields"=>"name,birthday,gender")  (name,id,gender,username)
     friends = @graph.get_connections("me", "friends", "fields" => "name,id,gender,username")
 
@@ -124,25 +139,43 @@ class GamesController < ApplicationController
 
     #every users looks like this: {"id"=>"13617126", "gender"=>"female", "name"=>"Olga Safronova", "username"=>"olga.safronova.180"}
 
-    @player_choice_1 = friends_array.sample
-    @player_choice_2 = friends_array.sample
-    @player_choice_3 = friends_array.sample
-    @player_choice_4 = friends_array.sample
-    @player_choice_5 = friends_array.sample
+
+    unique_friend_array = friends_array.sample(5)
+    @player_choice_1 = unique_friend_array[0]
+    @player_choice_2 = unique_friend_array[1]
+    @player_choice_3 = unique_friend_array[2]
+    @player_choice_4 = unique_friend_array[3]
+    @player_choice_5 = unique_friend_array[4]
 
     @player_1 = user_fb_id
+    @player_1_name = profile["name"]
 
   end
 
   def create
+
     game = params[:game]
     player_1 = game[:player_1]
     player_2 = game[:player_2]
     gender = game[:gender]
+    params[:game][:player_1_name]
+    player_1_name = game[:player_1_name]
+
+    player_1_from_db = User.where(uid: player_1).last
+    player_1_oauth_token = player_1_from_db[:oauth_token]
+
+    @graph = Koala::Facebook::API.new(player_1_oauth_token)
+
+    friend_id = player_2
+    player_2_from_api = @graph.get_connections("me", "friends/#{friend_id}", "fields" => "name")
+    player_2_name = player_2_from_api.first["name"]
+
 
     new_game = Game.new
     new_game.player_1 = player_1
     new_game.player_2 = player_2
+    new_game.player_1_name = player_1_name
+    new_game.player_2_name = player_2_name
     new_game.gender = gender
     new_game.save
 
@@ -157,27 +190,24 @@ class GamesController < ApplicationController
     #if is player 1
     current_player= game.player_1
 
-    oauth_token = User.where(uid: current_player).first
-
-    other_player = game.player_2
+    @other_player = game.player_2
+    @other_player_name = game.player_2_name
     #right code for, if is player 2.... !!!!!
 
     #pull that specific person from API
-    @given_1 = choices.given_1
+    #given_3.split(', ')
+    #getting a string...turnin into an array
+    @given_1 = choices.given_1.split(', ')
     @answered_1 = choices.answered_1
 
-    @given_2 = choices.given_2
+    @given_2 = choices.given_2.split(', ')
     @answered_2 = choices.answered_2
 
-    @given_3 = choices.given_3
+    @given_3 = choices.given_3.split(', ')
     @answered_3 = choices.answered_3
 
-    @game_id = game_id
+    #given = ["female", "Kamila Podvisotskaya", "kamila.podvisotskaya", "1103693780"]
 
-
-    #@graph = Koala::Facebook::API.new(oauth_token)
-
-    #@other_player_info = @graph.get_connections("#{current_player}", "friends/#{other_player}")
 
 
   end
@@ -226,7 +256,7 @@ class GamesController < ApplicationController
       @random_person_2 = unique_friend_array[1]
       @random_person_3 = unique_friend_array[2]
     else
-      flash[:notice] = "not enough mutual friends, pick someones else"
+      flash[:notice] = "not enough mutual friends, pick someone else"
       redirect_to(new_game_path)
     end
 
@@ -239,18 +269,30 @@ class GamesController < ApplicationController
   def update
     choice = params[:choice]
 
-    given_1 = choice[:given_1]
+    given_1_unparsed_rocker = choice[:given_1]
     answered_1 = choice[:answered_1]
 
-    given_2 = choice[:given_2]
+    given_2_unparsed_rocker = choice[:given_2]
     answered_2 = choice[:answered_2]
 
-    given_3 = choice[:given_3]
+    given_3_unparsed_rocker = choice[:given_3]
     answered_3 = choice[:answered_3]
 
     user_id = choice[:user_id]
 
     game_id = params[:id]
+
+    given_1_unparsed = given_1_unparsed_rocker.gsub("=>", ": ")
+    given_1_to_s = Yajl::Parser.parse(given_1_unparsed)
+    given_1 = given_1_to_s.values.join(', ')
+
+    given_2_unparsed = given_2_unparsed_rocker.gsub("=>", ": ")
+    given_2_to_s = Yajl::Parser.parse(given_2_unparsed)
+    given_2 = given_2_to_s.values.join(', ')
+
+    given_3_unparsed = given_3_unparsed_rocker.gsub("=>", ": ")
+    given_3_to_s = Yajl::Parser.parse(given_3_unparsed)
+    given_3 = given_3_to_s.values.join(', ')
 
     new_choice = Choice.new
     new_choice.given_1 = given_1
