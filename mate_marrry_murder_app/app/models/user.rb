@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
+
 end
 
 # Here's an example Auth Hash available in request.env['omniauth.auth']:

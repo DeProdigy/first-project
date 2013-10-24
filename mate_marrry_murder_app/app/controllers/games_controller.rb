@@ -6,8 +6,8 @@ class GamesController < ApplicationController
       @current_user_session = session[:user_id]
 
       current_user_db = User.find(@current_user_session)
-      @games_started = Game.where(player_1: current_user_db.uid)
-      @games_in = Game.where(player_2: current_user_db.uid)
+      @games_started = Game.order("created_at DESC").where(player_1: current_user_db.uid)
+      @games_in = Game.order("created_at DESC").where(player_2: current_user_db.uid)
       # @games_all << games_started
       # @games_all << games_in
     end
@@ -183,6 +183,7 @@ class GamesController < ApplicationController
   end
 
   def show
+
     game_id = params[:id]
     game = Game.where(id: game_id).first
     choices = Choice.where(game_id: game_id).first
@@ -197,18 +198,18 @@ class GamesController < ApplicationController
     #pull that specific person from API
     #given_3.split(', ')
     #getting a string...turnin into an array
-    @given_1 = choices.given_1.split(', ')
-    @answered_1 = choices.answered_1
+    @given_1 = choices[:given_1].split(', ')
+    @answered_1 = choices[:answered_1]
 
-    @given_2 = choices.given_2.split(', ')
-    @answered_2 = choices.answered_2
+    @given_2 = choices[:given_2].split(', ')
+    @answered_2 = choices[:answered_2]
 
-    @given_3 = choices.given_3.split(', ')
-    @answered_3 = choices.answered_3
+    @given_3 = choices[:given_3].split(', ')
+    @answered_3 = choices[:answered_3]
 
     #given = ["female", "Kamila Podvisotskaya", "kamila.podvisotskaya", "1103693780"]
 
-
+    @game_id = choices[:game_id]
 
   end
 
@@ -267,45 +268,53 @@ class GamesController < ApplicationController
   end
 
   def update
-    choice = params[:choice]
 
-    given_1_unparsed_rocker = choice[:given_1]
-    answered_1 = choice[:answered_1]
+    if (params[:choice][:answered_1] == params[:choice][:answered_2]) || (params[:choice][:answered_2] == params[:choice][:answered_3]) || (params[:choice][:answered_1] == params[:choice][:answered_3])
 
-    given_2_unparsed_rocker = choice[:given_2]
-    answered_2 = choice[:answered_2]
+      redirect_to :back, :notice => "BRAH, One choice per person! Here's some fresh ones."
 
-    given_3_unparsed_rocker = choice[:given_3]
-    answered_3 = choice[:answered_3]
 
-    user_id = choice[:user_id]
+    else
+      choice = params[:choice]
 
-    game_id = params[:id]
+      given_1_unparsed_rocker = choice[:given_1]
+      answered_1 = choice[:answered_1]
 
-    given_1_unparsed = given_1_unparsed_rocker.gsub("=>", ": ")
-    given_1_to_s = Yajl::Parser.parse(given_1_unparsed)
-    given_1 = given_1_to_s.values.join(', ')
+      given_2_unparsed_rocker = choice[:given_2]
+      answered_2 = choice[:answered_2]
 
-    given_2_unparsed = given_2_unparsed_rocker.gsub("=>", ": ")
-    given_2_to_s = Yajl::Parser.parse(given_2_unparsed)
-    given_2 = given_2_to_s.values.join(', ')
+      given_3_unparsed_rocker = choice[:given_3]
+      answered_3 = choice[:answered_3]
 
-    given_3_unparsed = given_3_unparsed_rocker.gsub("=>", ": ")
-    given_3_to_s = Yajl::Parser.parse(given_3_unparsed)
-    given_3 = given_3_to_s.values.join(', ')
+      user_id = choice[:user_id]
 
-    new_choice = Choice.new
-    new_choice.given_1 = given_1
-    new_choice.answered_1 = answered_1
-    new_choice.given_2 = given_2
-    new_choice.answered_2 = answered_2
-    new_choice.given_3 = given_3
-    new_choice.answered_3 = answered_3
-    new_choice.user_id = user_id
-    new_choice.game_id = game_id
-    new_choice.save
+      game_id = params[:id]
 
-    redirect_to(game_path)
+      given_1_unparsed = given_1_unparsed_rocker.gsub("=>", ": ")
+      given_1_to_s = Yajl::Parser.parse(given_1_unparsed)
+      given_1 = given_1_to_s.values.join(', ')
+
+      given_2_unparsed = given_2_unparsed_rocker.gsub("=>", ": ")
+      given_2_to_s = Yajl::Parser.parse(given_2_unparsed)
+      given_2 = given_2_to_s.values.join(', ')
+
+      given_3_unparsed = given_3_unparsed_rocker.gsub("=>", ": ")
+      given_3_to_s = Yajl::Parser.parse(given_3_unparsed)
+      given_3 = given_3_to_s.values.join(', ')
+
+      new_choice = Choice.new
+      new_choice.given_1 = given_1
+      new_choice.answered_1 = answered_1
+      new_choice.given_2 = given_2
+      new_choice.answered_2 = answered_2
+      new_choice.given_3 = given_3
+      new_choice.answered_3 = answered_3
+      new_choice.user_id = user_id
+      new_choice.game_id = game_id
+      new_choice.save
+
+      redirect_to(game_path)
+    end
   end
 
   def destroy
