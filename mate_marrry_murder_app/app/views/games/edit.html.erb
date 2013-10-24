@@ -2,42 +2,47 @@
 
 
 <%= form_for :choice do |f| %>
-  <%= image_tag("https://graph.facebook.com/#{@random_person_1["username"]}/picture?type=large") %><br>
-  <%= "#{@random_person_1["name"]}" %>
-  <br>
-  <br>
 
-  <%= f.radio_button :answered_1, "Mate", :value => "Mate_1" %>
-  <%= f.label :answered_1, "Mate", :value => "mate" %>
-  <%= f.radio_button :answered_1, "Marry" %>
-  <%= f.label :answered_1, "Marry", :value => "marry" %>
-  <%= f.radio_button :answered_1, "Murder" %>
-  <%= f.label :answered_1, "Murder", :value => "murder" %>
+  <div class="row" class="image_block">
+      <ul class="large-block-grid-3">
+        <li>
+          <%= image_tag("https://graph.facebook.com/#{@random_person_1["username"]}/picture?width=200&height=200") %><br>
+          <%= "#{@random_person_1["name"]}" %>
 
-  <%= image_tag("https://graph.facebook.com/#{@random_person_2["username"]}/picture?type=large") %><br>
-  <%= "#{@random_person_2["name"]}" %>
+          <%= f.radio_button :answered_1, "Mate", :value => "Mate_1" %>
+          <%= f.label :answered_1, "Mate", :value => "mate" %>
+          <%= f.radio_button :answered_1, "Marry" %>
+          <%= f.label :answered_1, "Marry", :value => "marry" %>
+          <%= f.radio_button :answered_1, "Murder" %>
+          <%= f.label :answered_1, "Murder", :value => "murder" %>
+        </li>
 
 
-  <%= f.radio_button :answered_2, "Mate", :value => "Mate_2" %>
-  <%= f.label :answered_2, "Mate", :value => "mate" %>
-  <%= f.radio_button :answered_2, "Marry" %>
-  <%= f.label :answered_2, "Marry", :value => "marry" %>
-  <%= f.radio_button :answered_2, "Murder" %>
-  <%= f.label :answered_2, "Murder", :value => "murder" %>
-  <br>
-  <br>
-  <br>
-  <%= image_tag("https://graph.facebook.com/#{@random_person_3["username"]}/picture?type=large") %><br>
-  <%= "#{@random_person_3["name"]}" %>
-  <br>
-  <br>
+        <li>
+          <%= image_tag("https://graph.facebook.com/#{@random_person_2["username"]}/picture?width=200&height=200") %><br>
+          <%= "#{@random_person_2["name"]}" %>
 
-    <%= f.radio_button :answered_3, "Mate", :value => "Mate_3" %>
-    <%= f.label :answered_3, "Mate", :value => "mate" %>
-    <%= f.radio_button :answered_3, "Marry" %>
-    <%= f.label :answered_3, "Marry", :value => "marry" %>
-    <%= f.radio_button :answered_3, "Murder" %>
-    <%= f.label :answered_3, "Murder", :value => "murder" %>
+
+          <%= f.radio_button :answered_2, "Mate", :value => "Mate_2" %>
+          <%= f.label :answered_2, "Mate", :value => "mate" %>
+          <%= f.radio_button :answered_2, "Marry" %>
+          <%= f.label :answered_2, "Marry", :value => "marry" %>
+          <%= f.radio_button :answered_2, "Murder" %>
+          <%= f.label :answered_2, "Murder", :value => "murder" %>
+        </li>
+
+        <li>
+          <%= image_tag("https://graph.facebook.com/#{@random_person_3["username"]}/picture?width=200&height=200") %><br>
+          <%= "#{@random_person_3["name"]}" %>
+
+          <%= f.radio_button :answered_3, "Mate", :value => "Mate_3" %>
+          <%= f.label :answered_3, "Mate", :value => "mate" %>
+          <%= f.radio_button :answered_3, "Marry" %>
+          <%= f.label :answered_3, "Marry", :value => "marry" %>
+          <%= f.radio_button :answered_3, "Murder" %>
+          <%= f.label :answered_3, "Murder", :value => "murder" %>
+        </li>
+      </ul>
 
   <br>
   <br>
@@ -52,3 +57,4 @@
     <%= f.submit 'Submit',  :class => 'button' %>
   <%# end %>
 <% end %>
+</div>
