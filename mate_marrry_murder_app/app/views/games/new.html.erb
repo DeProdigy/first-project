@@ -6,42 +6,65 @@
   <%= form_for Game.new do |f| %>
     <%= f.hidden_field :player_1_name, :value => "#{@player_1_name}" %>
 
+    <div class="row" class="image_block">
+      <ul class="large-block-grid-5">
+        <li>
+          <%= image_tag("https://graph.facebook.com/#{@player_choice_1["username"]}/picture?width=200&height=200") %>
+          <%= f.radio_button :player_2, "#{@player_choice_1["id"]}" %>
+          <%= f.label :player_2, "#{@player_choice_1["name"]}", :value => "#{@player_choice_1["id"]}" %>
+        </li>
 
-    <%= image_tag("https://graph.facebook.com/#{@player_choice_1["username"]}/picture?type=large") %>
-    <%= f.radio_button :player_2, "#{@player_choice_1["id"]}" %>
-    <%= f.label :player_2, "#{@player_choice_1["name"]}", :value => "#{@player_choice_1["id"]}" %><br>
+        <li>
+          <%= image_tag("https://graph.facebook.com/#{@player_choice_2["username"]}/picture?width=200&height=200") %>
+          <%= f.radio_button :player_2, "#{@player_choice_2["id"]}" %>
+          <%= f.label :player_2, "#{@player_choice_2["name"]}", :value => "#{@player_choice_2["id"]}" %>
+        </li>
 
-    <%= image_tag("https://graph.facebook.com/#{@player_choice_2["username"]}/picture?type=large") %>
-    <%= f.radio_button :player_2, "#{@player_choice_2["id"]}" %>
-    <%= f.label :player_2, "#{@player_choice_2["name"]}", :value => "#{@player_choice_2["id"]}" %><br>
+        <li>
+          <%= image_tag("https://graph.facebook.com/#{@player_choice_3["username"]}/picture?width=200&height=200") %>
+          <%= f.radio_button :player_2, "#{@player_choice_3["id"]}" %>
+          <%= f.label :player_2, "#{@player_choice_3["name"]}", :value => "#{@player_choice_3["id"]}" %>
+        </li>
 
-    <%= image_tag("https://graph.facebook.com/#{@player_choice_3["username"]}/picture?type=large") %>
-    <%= f.radio_button :player_2, "#{@player_choice_3["id"]}" %>
-    <%= f.label :player_2, "#{@player_choice_3["name"]}", :value => "#{@player_choice_3["id"]}" %><br>
+        <li>
+          <%= image_tag("https://graph.facebook.com/#{@player_choice_4["username"]}/picture?width=200&height=200") %>
+          <%= f.radio_button :player_2, "#{@player_choice_4["id"]}" %>
+          <%= f.label :player_2, "#{@player_choice_4["name"]}", :value => "#{@player_choice_4["id"]}" %>
+        </li>
 
-    <%= image_tag("https://graph.facebook.com/#{@player_choice_4["username"]}/picture?type=large") %>
-    <%= f.radio_button :player_2, "#{@player_choice_4["id"]}" %>
-    <%= f.label :player_2, "#{@player_choice_4["name"]}", :value => "#{@player_choice_4["id"]}" %><br>
+        <li>
+          <%= image_tag("https://graph.facebook.com/#{@player_choice_5["username"]}/picture?width=200&height=200") %>
+          <%= f.radio_button :player_2, "#{@player_choice_5["id"]}" %>
+          <%= f.label :player_2, "#{@player_choice_5["name"]}", :value => "#{@player_choice_5["id"]}" %>
+        </li>
+      </ul>
+       <h4>If you want a different set of people, please refresh the page</h4>
+    </div>
 
-    <%= image_tag("https://graph.facebook.com/#{@player_choice_5["username"]}/picture?type=large") %>
-    <%= f.radio_button :player_2, "#{@player_choice_5["id"]}" %>
-    <%= f.label :player_2, "#{@player_choice_5["name"]}", :value => "#{@player_choice_5["id"]}" %>
-  <br>
-  <br>
-  <h2>Choose a gender to play with</h2>
 
-    <%= f.radio_button :gender, "male" %>
-    <%= f.label :gender, "male", :value => "male" %><br>
-    <%= f.radio_button :gender, "female" %>
-    <%= f.label :gender, "female", :value => "female" %><br>
-    <br>
-    <%= f.hidden_field :player_1, :value => "#{@player_1}" %>
-    <%= f.submit %>
-  <% end %>
+  <div class="row">
+  <ul class="large-block-grid-2">
+    <h2>Choose a mutual friends gender to play with</h2>
+      <li>
+      <%= f.radio_button :gender, "male" %>
+      <%= f.label :gender, "male", :value => "male" %>
+      </li>
+      <li>
+      <%= f.radio_button :gender, "female" %>
+      <%= f.label :gender, "female", :value => "female" %>
+      </li>
+      <br>
+      <%= f.hidden_field :player_1, :value => "#{@player_1}" %>
+      <%= f.submit :class => 'button' %>
+
+      <% end %>
+    </li>
+    </ul>
+  </div>
 
 <div>
 <br>
-<h4>If you want a different set of people, please refresh the page</h4>
+
 
 
 

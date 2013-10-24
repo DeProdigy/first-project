@@ -8,23 +8,29 @@
 </head>
 <body>
 
-  <div id="user_nav">
-    <% if current_user %>
-      Signed in as <strong><%= current_user.name %></strong>!
-      <%= link_to "Sign out", signout_path, id: "sign_out" %>
-    <% else %>
-      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-    <% end %>
-  </div>
+  <nav class="top-bar">
+    <ul class="title-area">
+      <li class="name" id="user_nav">
+        <% if current_user %>
+          Signed in as <strong><%= current_user.name %></strong>!
+          <%= link_to "Sign out", signout_path, id: "sign_out" %>
+        <% else %>
+          <%= button_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", :class => 'button' %>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
 
 <div id="flash_notice">
   <% flash.each do |name, msg| %>
           <%= content_tag :div, msg, :id => "flash_#{name}" %>
   <% end %>
 </div>
-
-<%= yield %>
-
+<div class="row">
+  <div class="large-10 large-centered main-area columns">
+    <%= yield %>
+  </div>
+</div>
 </body>
 </html>
 

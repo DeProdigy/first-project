@@ -1,4 +1,4 @@
-<h1>Choose</h1>
+<h1>The hardest decision of your life: </h1>
 
 
 <%= form_for :choice do |f| %>
@@ -13,13 +13,10 @@
   <%= f.label :answered_1, "Marry", :value => "marry" %>
   <%= f.radio_button :answered_1, "Murder" %>
   <%= f.label :answered_1, "Murder", :value => "murder" %>
-  <br>
-  <br>
-  <br>
+
   <%= image_tag("https://graph.facebook.com/#{@random_person_2["username"]}/picture?type=large") %><br>
   <%= "#{@random_person_2["name"]}" %>
-  <br>
-  <br>
+
 
   <%= f.radio_button :answered_2, "Mate", :value => "Mate_2" %>
   <%= f.label :answered_2, "Mate", :value => "mate" %>
@@ -52,6 +49,6 @@
       <%= f.hidden_field :given_1, :value => @random_person_1 %>
       <%= f.hidden_field :given_2, :value => @random_person_2 %>
       <%= f.hidden_field :given_3, :value => @random_person_3 %>
-    <%= f.submit %>
+    <%= f.submit 'Submit',  :class => 'button' %>
   <%# end %>
 <% end %>

@@ -213,7 +213,7 @@ class GamesController < ApplicationController
 
   end
 
-  def edit
+  def edit # TODO WEEKEND, this hsould not be 'edit' this should be 'new' for choices
     @choice = Choice.new
     #params => {"action"=>"edit", "controller"=>"games", "id"=>"12"}
     game_id = params[:id]
@@ -257,7 +257,7 @@ class GamesController < ApplicationController
       @random_person_2 = unique_friend_array[1]
       @random_person_3 = unique_friend_array[2]
     else
-      flash[:notice] = "not enough mutual friends, pick someone else"
+      flash[:notice] = "Weak sauce, not enough mutual mates"
       redirect_to(new_game_path)
     end
 
@@ -267,7 +267,7 @@ class GamesController < ApplicationController
 
   end
 
-  def update
+  def update # TODO same fix as edit
 
     if (params[:choice][:answered_1] == params[:choice][:answered_2]) || (params[:choice][:answered_2] == params[:choice][:answered_3]) || (params[:choice][:answered_1] == params[:choice][:answered_3])
 
