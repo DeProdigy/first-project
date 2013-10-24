@@ -1188,6 +1188,7 @@ th.hide-for-touch {
     display: block;
     padding: 0;
     margin: 0 -0.625em;
+    margin-top: 20px;
     *zoom: 1; }
     [class*="block-grid-"]:before, [class*="block-grid-"]:after {
       content: " ";

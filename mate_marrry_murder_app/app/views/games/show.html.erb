@@ -7,22 +7,24 @@
 <br>
 <br>
 <h2>You chose:</h2>
-<div>
-  <div>
-    <h4><%= @given_1[1] %></h4>
-    <%= image_tag("https://graph.facebook.com/#{@given_1[3]}/picture?type=large") %>
-    <h4><%= @answered_1 %></h4>
-  </div>
-   <div>
-    <h4><%= @given_2[1] %></h4>
-    <%= image_tag("https://graph.facebook.com/#{@given_2[3]}/picture?type=large") %>
-    <h4><%= @answered_2 %></h4>
-  </div>
-   <div>
-    <h4><%= @given_3[1] %></h4>
-    <%= image_tag("https://graph.facebook.com/#{@given_3[3]}/picture?type=large") %>
-    <h4><%= @answered_3 %></h4>
-  </div>
+<div class="row" class="image_block">
+  <ul class="large-block-grid-3">
+    <li>
+      <h4><%= @given_1[1] %></h4>
+      <%= image_tag("https://graph.facebook.com/#{@given_1[3]}/picture?width=200&height=200") %>
+      <h4><%= @answered_1 %></h4>
+    </li>
+    <li>
+      <h4><%= @given_2[1] %></h4>
+      <%= image_tag("https://graph.facebook.com/#{@given_2[3]}/picture?width=200&height=200") %>
+      <h4><%= @answered_2 %></h4>
+    </li>
+    <li>
+      <h4><%= @given_3[1] %></h4>
+      <%= image_tag("https://graph.facebook.com/#{@given_3[3]}/picture?width=200&height=200") %>
+      <h4><%= @answered_3 %></h4>
+    </li>
+  </ul>
 </div>
 <br>
 <%= link_to("Start new game", new_game_path, :class => 'button') %>
