@@ -42,5 +42,9 @@
 #flash_notice {
   text-align: center;
   background-color: #FC8485;
-  padding: 4px 0;
+  padding: 3px 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #39424E;
 }
