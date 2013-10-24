@@ -1,16 +1,16 @@
 <h1>Welcome to Mate Marry Murder</h1>
 
   <% if @current_user_session == nil %>
-  <br>
+  <div class="loged-in-greeting">
     <h2>Play with your facebook friends</h2>
     <br>
-    <div>
+    <div class="loged-in-testimonial">
       <h2>"I love judging people... as long as they don't judge me"</h2>
       <h4>-- Random user testimonial</h4>
     <div>
-  <br>
-  <br>
+  </div>
   <% end %>
+
   <% if @current_user_session != nil %>
     <h2>Your Games:</h2>
     <% if @games_started.empty? == false %>

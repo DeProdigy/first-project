@@ -11,3 +11,36 @@
 .image_block {
   margin-top: -15px;
 }
+
+#homebutton {
+  float: right;
+}
+
+.top-bar .title-area{
+  padding: 0 25px;
+}
+
+.top-bar .name {
+    margin-top: 10px;
+  height: initial;
+}
+
+.radio-btn{
+  display: inline-block;
+  margin: 25px;
+  margin-bottom: 50px;
+}
+
+.player-choice-list img {
+  margin-bottom: 22.5px;
+}
+
+.loged-in-greeting {
+  margin-top: 80px;
+}
+
+#flash_notice {
+  text-align: center;
+  background-color: #FC8485;
+  padding: 4px 0;
+}

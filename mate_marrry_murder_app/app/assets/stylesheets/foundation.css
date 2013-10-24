@@ -1472,7 +1472,7 @@ a {
   text-decoration: none;
   line-height: inherit; }
   a:hover, a:focus {
-    color: #324659; }
+    color: #F1F4F5; }
   a img {
     border: none; }
 
@@ -3394,7 +3394,7 @@ label.error {
       height: 2em;
       padding: 0 10px;
       position: relative;
-      top: 8px; }
+      top: inherit; }
     .top-bar.expanded {
       background: #111111; }
 

@@ -7,7 +7,7 @@
     <%= f.hidden_field :player_1_name, :value => "#{@player_1_name}" %>
 
     <div class="row" class="image_block">
-      <ul class="large-block-grid-5">
+      <ul class="large-block-grid-5 player-choice-list">
         <li>
           <%= image_tag("https://graph.facebook.com/#{@player_choice_1["username"]}/picture?width=200&height=200") %>
           <%= f.radio_button :player_2, "#{@player_choice_1["id"]}" %>
@@ -42,23 +42,26 @@
 
 
   <div class="row">
-  <ul class="large-block-grid-2">
+  <div class="large-block-grid-2">
     <h2>Choose a mutual friends gender to choose from</h2>
-      <li>
+
+
+<div class="radio-btn">
       <%= f.radio_button :gender, "male" %>
       <%= f.label :gender, "male", :value => "male" %>
-      </li>
-      <li>
+</div>
+<div class="radio-btn">
       <%= f.radio_button :gender, "female" %>
       <%= f.label :gender, "female", :value => "female" %>
-      </li>
-      <br>
+    </div>
+<p>
       <%= f.hidden_field :player_1, :value => "#{@player_1}" %>
       <%= f.submit :class => 'button' %>
-
+</p>
       <% end %>
-    </li>
-    </ul>
+    </div>
+
+    </div>
   </div>
 
 <div>
