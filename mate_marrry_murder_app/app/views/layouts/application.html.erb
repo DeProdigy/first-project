@@ -12,8 +12,8 @@
     <ul class="title-area">
       <li class="name" id="user_nav">
         <% if current_user %>
-          Signed in as <strong><%= current_user.name %></strong>!
-          <%= link_to "Sign out", signout_path, id: "sign_out" %>
+          <%= link_to "Sign out", signout_path, id: "sign_out", :class => 'signed-in-menu-right' %>
+          <p class="signed-in-menu-right">Signed in as <strong><%= current_user.name %></strong>!</p>
           <%= link_to "Home", "/", id: "homebutton", :class => 'button' %>
         <% end %>
       </li>

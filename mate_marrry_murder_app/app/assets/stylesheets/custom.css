@@ -13,6 +13,14 @@
 }
 
 #homebutton {
+  float: left;
+}
+
+#sign_out {
+  margin-left: 15px;
+}
+
+.signed-in-menu-right {
   float: right;
 }
 
@@ -77,13 +85,16 @@ h1 {
 }
 
 .top-greeting-1 {
-  margin-right: 110px;
+  margin-left: 20px;
+  margin-right: 40px;
 }
 .top-greeting-2 {
-  margin-left: 40px;
-  padding-left: 70px;
+  padding-left: 140px;
 }
 .top-greeting-3 {
-  margin-left: 180px;
+  padding-left: 160px;
 }
 
+img {
+  border-radius: 100%;
+}
