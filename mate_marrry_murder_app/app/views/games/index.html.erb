@@ -1,12 +1,20 @@
-<h1>Welcome to Mate Marry Murder</h1>
+<div class="top-greeting-div images-index row large-block-grid-3">
+  <h1 class="top-greeting top-greeting-1">Mate</h1>
+  <h1 class="top-greeting top-greeting-2">Marry</h1>
+  <h1 class="top-greeting top-greeting-3">Murder</h1>
+</div>
 
   <% if @current_user_session == nil %>
+  <div class="images-index row large-block-grid-3">
+      <img src='/assets/1414851_10202570688534965_917471824_n.jpg' class='images-in-index'>
+      <img src='/assets/1395087_10202570688454963_1717812094_n.jpg' class='images-in-index'>
+      <img src='/assets/1371567_10202570688414962_273395275_n.jpg' class='images-in-index'>
+  </div>
   <div class="loged-in-greeting">
     <h2>Play with your facebook friends</h2>
-    <br>
     <div class="loged-in-testimonial">
       <h2>"I love judging people... as long as they don't judge me"</h2>
-      <h4>-- Random user testimonial</h4>
+      <h4>- Random user testimonial</h4>
     <div>
   </div>
   <% end %>

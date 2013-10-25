@@ -45,6 +45,45 @@
   padding: 3px 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
+  color: #39424E;
+  font-size: 1.6em;
+}
+
+h1 {
+  font-size: 2.4em;
   color: #39424E;
 }
+
+
+#sign_in {
+  margin-top: 20px;
+}
+
+
+.images-in-index {
+  width: 200px;
+  height: 200px;
+  margin: 0 37px;
+  margin-top: 15px;
+  margin-bottom: -35px;
+}
+.top-greeting-div {
+  margin-top: 20px;
+}
+.top-greeting {
+  display: inline-block;
+
+}
+
+.top-greeting-1 {
+  margin-right: 110px;
+}
+.top-greeting-2 {
+  margin-left: 40px;
+  padding-left: 70px;
+}
+.top-greeting-3 {
+  margin-left: 180px;
+}
+

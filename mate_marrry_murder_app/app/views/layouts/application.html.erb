@@ -15,8 +15,6 @@
           Signed in as <strong><%= current_user.name %></strong>!
           <%= link_to "Sign out", signout_path, id: "sign_out" %>
           <%= link_to "Home", "/", id: "homebutton", :class => 'button' %>
-        <% else %>
-          <%= button_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", :class => 'button' %>
         <% end %>
       </li>
     </ul>
@@ -30,6 +28,11 @@
 <div class="row">
   <div class="large-10 large-centered main-area columns">
     <%= yield %>
+
+  <% unless current_user %>
+    <%= button_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", :class => 'button' %>
+  <% end %>
+
   </div>
 </div>
 </body>
