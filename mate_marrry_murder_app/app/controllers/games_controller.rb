@@ -20,7 +20,7 @@ class GamesController < ApplicationController
 
     friends_array = []
     #get the current user's id from cookies
-    user_id = session[:user_id]
+    user_id = session[:user_id] #OPTIMIZE SHOULD BE CURRENT USER (@current_user)
 
     # create_table "users", :force => true do |t|
     # t.string   "provider"
